@@ -1,3 +1,4 @@
+import { getProduct, getProducts } from "@/service/products";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 interface Props {
@@ -12,15 +13,17 @@ export const generateMetadata = ({ params }: Props): Metadata => {
   };
 };
 
-export default function Product({ params }: Props) {
-  if (params.slug === "notfound") {
+export default function Product({ params: { slug } }: Props) {
+  const product = getProduct(slug);
+
+  if (!product) {
     notFound();
   }
-  return <h1>{params.slug} 설명 페이지</h1>;
+  return <h1>{product} 설명 페이지</h1>;
 }
 
 export function generateStaticParams() {
-  const products = ["pants", "shirts"];
+  const products = getProducts();
 
   return products.map((product) => ({
     slug: product,

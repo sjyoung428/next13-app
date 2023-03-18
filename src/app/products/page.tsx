@@ -1,8 +1,9 @@
+import { getProducts } from "@/service/products";
 import Link from "next/link";
 
-const products = ["shirt", "pants", "skirt", "shoes"];
-
 export default function Products() {
+  const products = getProducts();
+
   return (
     <>
       <h1>Products</h1>
