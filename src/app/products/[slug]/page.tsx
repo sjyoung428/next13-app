@@ -1,9 +1,16 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 interface Props {
   params: {
     slug: string;
   };
 }
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `${params.slug} 설명 페이지`,
+  };
+};
 
 export default function Product({ params }: Props) {
   if (params.slug === "notfound") {

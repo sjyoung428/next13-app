@@ -1,14 +1,17 @@
 import Link from "next/link";
 import styles from "./layout.module.css";
+import { Metadata } from "next";
 
 interface Props {
   children: React.ReactNode;
-  params: {
-    slug: string;
-  };
 }
 
-export default function ProductsLayout({ children, params }: Props) {
+export const metadata: Metadata = {
+  title: "전체 제품 확인",
+  description: "전체 제품을 확인합니다.",
+};
+
+export default function ProductsLayout({ children }: Props) {
   return (
     <>
       <nav className={styles.nav}>
