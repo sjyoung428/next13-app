@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 interface Props {
   params: {
     slug: string;
@@ -5,6 +6,9 @@ interface Props {
 }
 
 export default function Product({ params }: Props) {
+  if (params.slug === "not") {
+    notFound();
+  }
   return <h1>{params.slug} 페이지</h1>;
 }
 
