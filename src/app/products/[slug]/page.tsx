@@ -7,6 +7,8 @@ interface Props {
   };
 }
 
+export const revalidate = 3;
+
 export const generateMetadata = ({ params }: Props): Metadata => {
   return {
     title: `${params.slug} 설명 페이지`,
