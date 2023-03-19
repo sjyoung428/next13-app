@@ -13,19 +13,23 @@ export const generateMetadata = ({ params }: Props): Metadata => {
   };
 };
 
-export default function Product({ params: { slug } }: Props) {
-  const product = getProduct(slug);
+export default async function ProductPage({ params: { slug } }: Props) {
+  if (slug === "man" || slug === "women") {
+    return <h1>{slug} 옷</h1>;
+  }
+
+  const product = await getProduct(slug);
 
   if (!product) {
     notFound();
   }
-  return <h1>{product} 설명 페이지</h1>;
+  return <h1>{product.name} 설명 페이지</h1>;
 }
 
-export function generateStaticParams() {
-  const products = getProducts();
+export async function generateStaticParams() {
+  const products = await getProducts();
 
   return products.map((product) => ({
-    slug: product,
+    slug: product.id,
   }));
 }
