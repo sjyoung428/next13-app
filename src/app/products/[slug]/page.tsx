@@ -2,6 +2,7 @@ import { getProduct, getProducts } from "@/service/products";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import GoProductsButton from "@/components/GoProductsButton";
 
 interface Props {
   params: {
@@ -36,6 +37,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width={300}
         height={300}
       />
+      <GoProductsButton />
     </>
   );
 }
